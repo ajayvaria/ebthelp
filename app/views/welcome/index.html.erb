@@ -1,16 +1,13 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
-
+<h1>SNAP Map</h1>
 <%= form_tag("", method: "get") do %>
-  <%= text_field_tag(:q) %>
+  <%= text_field_tag(:q, @q, placeholder: 'Search') %>
   <%= submit_tag("Search") %>
 <% end %>
 
+<br/>
+
 <div class="map_container">
   <div id="map" class='map'></div>
-  <%= @nearby_results.all.inspect %>
 </div>
 
 <script>
@@ -18,13 +15,25 @@ handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   var locMarkers = []
   <% @locations.each do |location| %>
+    locMarkers.push({
+      lat: <%= location[1] %>,
+      lng: <%= location[2] %>,
+      infowindow: "<%= location[0] %>"
+    });
+  <% end %>
+
   locMarkers.push({
-    lat: <%= location[1] %>,
-    lng: <%= location[2] %>,
-    infowindow: "<%= location[0] %>"
+    lat: <%= @coordinates_q[0] %>,
+    lng: <%= @coordinates_q[1] %>,
+    infowindow: "<%= @localized_q %>",
+    "picture": {
+          "url": 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          "width":  32,
+          "height": 32
+        }    
   });
-<% end %>
-markers = handler.addMarkers(locMarkers)
+
+  markers = handler.addMarkers(locMarkers)
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
   handler.getMap().setZoom(14);
