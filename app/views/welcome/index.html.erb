@@ -44,7 +44,7 @@
       <h4 style='margin-left:29px'><%= @nearby_results.length %> <%= "location".pluralize(@nearby_results.length) %> within 0.25 miles</h4>
       <% @nearby_results[0..9].each do |result| %>
         <div class='col-md-12' style='padding-bottom: 10px'>
-          <div class='col-md-4'><%= image_tag result.image_url || "" %></div>
+          <div class='col-md-4'><%= image_tag result.image_url || "/placeholder.jpg" %></div>
           <div class='col-md-8'>
             <div style='font-size:18px'><%= link_to result.clean_name, result.yelp_url %></div>
             <div><%= result.address %></div>
