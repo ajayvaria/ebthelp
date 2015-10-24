@@ -6,7 +6,7 @@ class TwilioController < ApplicationController
     # message = client.messages.create from: '+16503997911', to: '+17813083441', body: 'Learning to send SMS you are!!!'
     
     twiml = Twilio::TwiML::Response.new do |r|
-        r.Message "Hey there! I got a text from you: #{params['Body']} #{params[:Body]}"
+        r.Message "Hey there! I got a text from you: #{params['Body']}"
     end
         
     render text: twiml.text
