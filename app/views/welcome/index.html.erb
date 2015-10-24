@@ -5,7 +5,7 @@
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
-
+  <%= @nearby_results.all.inspect %>
 </div>
 
 
@@ -17,7 +17,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   locMarkers.push({
     lat: <%= location[1] %>,
     lng: <%= location[2] %>,
-    infowindow: "<%= location[0] %>,<%= location[1] %>,<%= location[2] %>"
+    infowindow: "<%= location[0] %>"
   });
 <% end %>
 markers = handler.addMarkers(locMarkers)
