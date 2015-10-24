@@ -7,9 +7,13 @@ class FoodLocation < ActiveRecord::Base
 		name.titleize.gsub(/\s+\d+$/, '')
 	end
 	
+	def localized_address
+	  FoodLocation.localize(address)
+  end
+	
 	def self.localize(location)
 	  if location && location !~ /(san francisco)/i
-	    location += ", san francisco"
+	    location += ", San Francisco, CA"
     end
     
     location
