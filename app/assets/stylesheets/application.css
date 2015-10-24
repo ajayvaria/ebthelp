@@ -28,3 +28,15 @@
      margin: 0;
      padding: 0;
  }
+ 
+ .navbar {
+   height: 90px;
+   margin-bottom: 0px;
+   background-image: none;
+   background-color: white;   
+   border-color: white;   
+ }
+ 
+.navbar-form {
+  padding-right: 0px;
+}

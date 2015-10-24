@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 	def index
 	  @q = params['q']
 	  @localized_q = FoodLocation.localize(params['q'])
-		@nearby_results = FoodLocation.near(@localized_q, 1)
+		@nearby_results = FoodLocation.near(@localized_q, 0.25)
 
     @coordinates_q = Geocoder.coordinates(@localized_q)
 
