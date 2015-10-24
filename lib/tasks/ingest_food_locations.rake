@@ -17,6 +17,7 @@ task read_csv_locations: :environment do
     	# end
     	fl.latitude = latitude
     	fl.longitude = longitude
+    	puts "."
     	fl.save!
   	end
   end
