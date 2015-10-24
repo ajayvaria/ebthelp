@@ -11,7 +11,13 @@ task read_csv_locations: :environment do
     city = row[5]
     zip = row[7]
     if city == "San Francisco"
-    	fl = FoodLocation.create!({name:name, longitude:longitude, latitude:latitude, address:address, zip:zip})
+    	fl = FoodLocation.where(:name => name).first
+    	# if fl.latitude != latitude || fl.longitude != longitude
+    	# 	puts "%s, %s" % [fl.latitude, fl.longitude]
+    	# end
+    	fl.latitude = latitude
+    	fl.longitude = longitude
+    	fl.save!
   	end
   end
 end
