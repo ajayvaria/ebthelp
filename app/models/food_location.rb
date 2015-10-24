@@ -18,4 +18,8 @@ class FoodLocation < ActiveRecord::Base
     
     location
   end
+  
+  def yelp_url
+    "http://www.yelp.com/biz/#{yelp_id}"
+  end
 end
