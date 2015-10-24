@@ -7,7 +7,7 @@ class TwilioController < ApplicationController
     
     results = FoodLocation.near(params['Body'], 1)[0..4]
 
-    message = results.length > 0 ? results.collect{|r| "#{r.name}, #{r.address}, " + sprintf("%.2f mi", r.distance)}.join("\n") : "No results"
+    message = results.length > 0 ? results.collect{|r| "#{r.clean_name} - #{r.address} (" + sprintf("%.2f mi", r.distance) + ")"}.join("\n") : "No results"
     
     twiml = Twilio::TwiML::Response.new do |r|
         r.Message message
