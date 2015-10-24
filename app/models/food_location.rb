@@ -8,7 +8,7 @@ class FoodLocation < ActiveRecord::Base
 	end
 	
 	def self.localize(location)
-	  if location !~ /(san francisco)/i
+	  if location && location !~ /(san francisco)/i
 	    location += ", san francisco"
     end
     

@@ -22,16 +22,18 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     });
   <% end %>
 
-  locMarkers.push({
-    lat: <%= @coordinates_q[0] %>,
-    lng: <%= @coordinates_q[1] %>,
-    infowindow: "<%= @localized_q %>",
-    "picture": {
-          "url": 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-          "width":  32,
-          "height": 32
-        }    
-  });
+  <% if @localized_q %>
+    locMarkers.push({
+      lat: <%= @coordinates_q[0] %>,
+      lng: <%= @coordinates_q[1] %>,
+      infowindow: "<%= @localized_q %>",
+      "picture": {
+            "url": 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+            "width":  32,
+            "height": 32
+          }    
+    });
+  <% end %>
 
   markers = handler.addMarkers(locMarkers)
   handler.bounds.extendWith(markers);
