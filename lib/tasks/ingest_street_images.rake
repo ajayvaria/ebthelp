@@ -23,9 +23,7 @@ task ingest_street_images: :environment do
 	  	puts fl.yelp_id
 	  	fl.save
 	  	i += 1
-	  	if i % 5 == 0
-	  		sleep(1)
-	  	end
+  		sleep(1)
 	  end
   end
 end
