@@ -3,11 +3,15 @@
   The time is now: <%= Time.now %>
 </p>
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<%= form_tag("", method: "get") do %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div class="map_container">
+  <div id="map" class='map'></div>
   <%= @nearby_results.all.inspect %>
 </div>
-
 
 <script>
 handler = Gmaps.build('Google');
