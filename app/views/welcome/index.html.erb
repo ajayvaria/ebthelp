@@ -35,11 +35,14 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
             "height": 32
           }    
     });
+    
   <% end %>
 
   markers = handler.addMarkers(locMarkers)
+
+  handler.map.centerOn(markers[markers.length-1]);    
+
   handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  handler.getMap().setZoom(14);
+  handler.getMap().setZoom(16);
 });
 </script>
