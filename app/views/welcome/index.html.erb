@@ -5,19 +5,22 @@
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
+
 </div>
 
 
 <script>
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
-    {
-      lat: 37.7792,
-      lng: -122.4158,
-      infowindow: "SF Public Library"
-    }
-  ]);
+  var locMarkers = []
+  <% @locations.each do |location| %>
+  locMarkers.push({
+    lat: <%= location[1] %>,
+    lng: <%= location[2] %>,
+    infowindow: "<%= location[0] %>"
+  });
+<% end %>
+markers = handler.addMarkers(locMarkers)
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
   handler.getMap().setZoom(14);
