@@ -1,8 +1,10 @@
-<h1>SNAP Map</h1>
+<%= image_tag '/logo.png', width: '100px' %>
+<div style='float:right'>
 <%= form_tag("", method: "get") do %>
-  <%= text_field_tag(:q, @q, placeholder: 'Search') %>
+  <%= text_field_tag(:q, @q, placeholder: 'Search', style: 'width:500px;height:50px;font-size:22px') %>
   <%= submit_tag("Search") %>
 <% end %>
+</div>
 
 <br/>
 
